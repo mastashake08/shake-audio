@@ -3,7 +3,9 @@ export class AudioEncoder {
     this.encoder = new AudioContext();
   }
 
+
   async encode(audioBuffer, mimeType) {
+    alert('Audio Encoding please do not close this window.')
     const blob = await this._encodeToBlob(audioBuffer, mimeType);
     const buffer = await this._readBlobAsArrayBuffer(blob);
     return buffer;
@@ -13,28 +15,32 @@ export class AudioEncoder {
     return new Promise((resolve, reject) => {
       const audioData = this._flattenAudioBuffer(audioBuffer);
       const audioBufferSource = this.encoder.createBufferSource();
-      const audioBuffer = this.encoder.createBuffer(1, audioData.length,
-this.encoder.sampleRate);
+      audioBuffer = this.encoder.createBuffer(audioBuffer.numberOfChannels, audioData.length, audioBuffer.sampleRate);
       audioBuffer.getChannelData(0).set(audioData);
       audioBufferSource.buffer = audioBuffer;
-      const mediaRecorder = new
-MediaRecorder(this.encoder.createMediaStreamDestination().stream);
+      const dest = this.encoder.createMediaStreamDestination()
+      const mediaRecorder = new MediaRecorder(dest.stream);
       const chunks = [];
 
       mediaRecorder.addEventListener("dataavailable", (event) => {
         chunks.push(event.data);
+
+
       });
 
       mediaRecorder.addEventListener("stop", () => {
         const blob = new Blob(chunks, { type: mimeType });
+
         resolve(blob);
       });
-
-      audioBufferSource.connect(mediaRecorder);
+      audioBufferSource.connect(dest);
       audioBufferSource.start();
+
+      mediaRecorder.start()
       setTimeout(() => {
         mediaRecorder.stop();
-      }, audioBufferSource.buffer.duration * 1000);
+        alert('Audio Encoded!')
+      },  audioBufferSource.buffer.duration * 1000);
     });
   }
 
