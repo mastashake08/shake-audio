@@ -1,10 +1,14 @@
 {
   "name": "shake-audio",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "A Javascript class that uses Web Audio to encode and decode audio files",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mastashake08/shake-audio.git"
   },
   "keywords": [
     "web",
