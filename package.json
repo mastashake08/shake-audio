@@ -1,5 +1,5 @@
 {
-  "name": "@mastashake08/shake-audio",
+  "name": "mastashake08/shake-audio",
   "version": "1.0.0",
   "description": "A Javascript class that uses Web Audio to encode and decode audio files",
   "main": "index.js",
