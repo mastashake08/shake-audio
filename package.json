@@ -1,0 +1,19 @@
+{
+  "name": "@mastashake08/shake-audio",
+  "version": "0.0.1",
+  "description": "A Javascript class that uses Web Audio to encode and decode audio files",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "web",
+    "audio",
+    "audio",
+    "encoder",
+    "audio",
+    "decoder"
+  ],
+  "author": "Jyrone Parker",
+  "license": "ISC"
+}
