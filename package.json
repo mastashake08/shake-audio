@@ -1,6 +1,6 @@
 {
   "name": "shake-audio",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A Javascript class that uses Web Audio to encode and decode audio files",
   "main": "index.js",
   "scripts": {
